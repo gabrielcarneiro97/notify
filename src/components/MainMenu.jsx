@@ -13,8 +13,8 @@ function MainMenu(props) {
       selectedKeys={[pathname]}
       style={{ height: '100%', borderRight: 0 }}
     >
-      <Menu.Item key={`${match.url}/importar`}>
-        <Link to={`${match.url}/importar`}>
+      <Menu.Item key={`${match.url}/registrar`}>
+        <Link to={`${match.url}/registrar`}>
           <Icon type="download" />Importar Notas
         </Link>
       </Menu.Item>

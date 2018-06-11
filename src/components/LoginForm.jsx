@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button, message } from 'antd';
 import propTypes from 'prop-types';
+import axios from 'axios';
 
-import { loginGoogle } from '../services';
+import { loginGoogle, api, auth } from '../services';
 
 import './LoginForm.css';
 
@@ -31,8 +32,19 @@ class LoginForm extends React.Component {
 
   handleBtnGoogle = () => {
     const { from } = this.props.history.location.state || { from: { pathname: '/app' } };
-    loginGoogle().then(() => {
-      this.props.history.push(from);
+    loginGoogle().then((data) => {
+      axios.get(`${api}/whitelist`, {
+        params: {
+          email: data.user.email,
+        },
+      }).then(() => {
+        this.props.history.push(from);
+      }).catch((err) => {
+        console.error(err);
+        auth.signOut().then(() => {
+          message.error('Usuário não autorizado!');
+        });
+      });
     }).catch((err) => {
       console.error(err);
     });

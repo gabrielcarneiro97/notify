@@ -31,10 +31,10 @@ function MainLogged({ match }) {
             }}
         >
           <Switch>
-            <Route exact path={`${match.path}/importar`} component={Moc1} />
+            <Route exact path={`${match.path}/registrar`} component={Moc1} />
             <Route exact path={`${match.path}/visualizar`} component={Moc2} />
 
-            <Redirect from="/app" to={`${match.url}/importar`} />
+            <Redirect from="/app" to={`${match.url}/visualizar`} />
           </Switch>
         </Content>
       </Layout>
