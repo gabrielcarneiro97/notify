@@ -24,7 +24,7 @@ function Navbar(props) {
         {
           // eslint-disable-next-line
         }<a style={{ color: '#FFF' }}>
-          <span style={{ fontWeight: 'bolder' }}>DANFY </span>
+          <span style={{ fontWeight: 'bolder' }}>NOTIFY </span>
           <span style={{ fontWeight: 'lighter' }}>{version}</span>
           {
             // eslint-disable-next-line
