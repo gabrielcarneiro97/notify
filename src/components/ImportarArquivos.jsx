@@ -7,9 +7,9 @@ import { api } from '../services';
 function ImportarAquivos(props) {
   const uploadProps = {
     name: 'file',
-    action: `${api}/file`,
-    accept: '.REM',
-    showUploadList: false,
+    action: `${api}/file?type=${props.accept}`,
+    accept: props.accept,
+    showUploadList: props.showUploadList,
     headers: {
       authorization: 'authorization-text',
     },
@@ -35,6 +35,12 @@ function ImportarAquivos(props) {
 
 ImportarAquivos.propTypes = {
   onNewFile: PropTypes.func.isRequired,
+  accept: PropTypes.string.isRequired,
+  showUploadList: PropTypes.bool,
+};
+
+ImportarAquivos.defaultProps = {
+  showUploadList: true,
 };
 
 export default ImportarAquivos;

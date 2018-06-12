@@ -3,13 +3,9 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { Layout } from 'antd';
 import PropTypes from 'prop-types';
 
-import { MainMenu, ImportarArquivos } from '.';
+import { MainMenu, InserirDados } from '.';
 
 const { Content, Sider } = Layout;
-
-function Moc1() {
-  return <ImportarArquivos onNewFile={d => console.log(d)} />;
-}
 
 function Moc2() {
   return <div>Moc2</div>;
@@ -31,7 +27,7 @@ function MainLogged({ match }) {
             }}
         >
           <Switch>
-            <Route exact path={`${match.path}/registrar`} component={Moc1} />
+            <Route exact path={`${match.path}/registrar`} component={InserirDados} />
             <Route exact path={`${match.path}/visualizar`} component={Moc2} />
 
             <Redirect from="/app" to={`${match.url}/visualizar`} />

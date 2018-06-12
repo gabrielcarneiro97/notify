@@ -5,3 +5,5 @@ export { default as Navbar } from './Navbar';
 export { default as MainMenu } from './MainMenu';
 export { default as MainLogged } from './MainLogged';
 export { default as ImportarArquivos } from './ImportarArquivos';
+export { default as InserirDados } from './InserirDados';
+export { default as TitulosTable } from './TitulosTable';
