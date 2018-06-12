@@ -7,3 +7,4 @@ export { default as MainLogged } from './MainLogged';
 export { default as ImportarArquivos } from './ImportarArquivos';
 export { default as InserirDados } from './InserirDados';
 export { default as TitulosTable } from './TitulosTable';
+export { default as EnviarTitulos } from './EnviarTitulos';

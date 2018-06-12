@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ImportarArquivos, TitulosTable } from '.';
+import { ImportarArquivos, TitulosTable, EnviarTitulos } from '.';
 
 class InserirDados extends React.Component {
   state = {
@@ -40,7 +40,10 @@ class InserirDados extends React.Component {
           accept=".REM"
           showUploadList={false}
           onNewFile={this.newFile}
-        />
+        >
+          Selecionar Remessa
+        </ImportarArquivos>
+        <EnviarTitulos {...this.state} />
         <div>
           <TitulosTable
             titulos={this.state.titulos}
