@@ -15,7 +15,7 @@ function MainMenu(props) {
     >
       <Menu.Item key={`${match.url}/registrar`}>
         <Link to={`${match.url}/registrar`}>
-          <Icon type="download" />Importar Notas
+          <Icon type="download" />Inserir dados
         </Link>
       </Menu.Item>
       <Menu.Item key={`${match.url}/visualizar`}>

@@ -3,12 +3,12 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { Layout } from 'antd';
 import PropTypes from 'prop-types';
 
-import { MainMenu } from '.';
+import { MainMenu, ImportarArquivos } from '.';
 
 const { Content, Sider } = Layout;
 
 function Moc1() {
-  return <div>Moc1</div>;
+  return <ImportarArquivos onNewFile={d => console.log(d)} />;
 }
 
 function Moc2() {
