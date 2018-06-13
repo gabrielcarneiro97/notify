@@ -1,9 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Row, Col, Button } from 'antd';
 import { SelecionarData, PagosCheckbox } from '.';
 
 class VisualizarForm extends React.Component {
+  static propTypes = {
+    onConfirm: PropTypes.func.isRequired,
+    disabled: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    disabled: false,
+  }
+
   state = {
     inicio: 0,
     fim: 0,

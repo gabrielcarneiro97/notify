@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Table, Checkbox, Row, Col, Button, Popconfirm } from 'antd';
 
@@ -84,5 +85,10 @@ function VisualizarTitulosTable(props) {
     </Row>
   );
 }
+
+VisualizarTitulosTable.propTypes = {
+  onTituloDelete: PropTypes.func.isRequired,
+  titulos: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default VisualizarTitulosTable;

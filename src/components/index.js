@@ -13,3 +13,4 @@ export { default as SelecionarData } from './SelecionarData';
 export { default as VisualizarTitulosTable } from './VisualizarTitulosTable';
 export { default as PagosCheckbox } from './PagosCheckbox';
 export { default as VisualizarForm } from './VisualizarForm';
+export { default as CadastroEmpresas } from './CadastroEmpresas';

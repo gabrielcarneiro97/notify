@@ -23,6 +23,11 @@ function MainMenu(props) {
           <Icon type="folder-open" />Visualizar Títulos
         </Link>
       </Menu.Item>
+      <Menu.Item key={`${match.url}/empresas`}>
+        <Link to={`${match.url}/empresas`}>
+          <Icon type="safety" />Cadastro Empresas
+        </Link>
+      </Menu.Item>
     </Menu>
   );
 }
