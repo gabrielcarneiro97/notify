@@ -15,12 +15,12 @@ function MainMenu(props) {
     >
       <Menu.Item key={`${match.url}/registrar`}>
         <Link to={`${match.url}/registrar`}>
-          <Icon type="download" />Inserir dados
+          <Icon type="download" />Inserir Dados
         </Link>
       </Menu.Item>
       <Menu.Item key={`${match.url}/visualizar`}>
         <Link to={`${match.url}/visualizar`}>
-          <Icon type="folder-open" />Visualizar Movimento
+          <Icon type="folder-open" />Visualizar Títulos
         </Link>
       </Menu.Item>
     </Menu>

@@ -1,6 +1,8 @@
 import React from 'react';
+import { Row, Col } from 'antd';
 
-import { ImportarArquivos, TitulosTable, EnviarTitulos } from '.';
+import { ImportarArquivos, EnviarTitulosTable, EnviarTitulos } from '.';
+
 
 class InserirDados extends React.Component {
   state = {
@@ -35,24 +37,41 @@ class InserirDados extends React.Component {
 
   render() {
     return (
-      <div>
-        <ImportarArquivos
-          accept=".REM"
-          showUploadList={false}
-          onNewFile={this.newFile}
+      <React.Fragment>
+        <Row
+          type="flex"
+          justify="center"
         >
-          Selecionar Remessa
-        </ImportarArquivos>
-        <EnviarTitulos {...this.state} />
-        <div>
-          <TitulosTable
+          <Col
+            span={11}
+          >
+            <ImportarArquivos
+              accept=".REM"
+              showUploadList={false}
+              onNewFile={this.newFile}
+            >
+              Selecionar Remessa
+            </ImportarArquivos>
+          </Col>
+          <Col
+            span={11}
+            style={{
+              textAlign: 'end',
+            }}
+          >
+            <EnviarTitulos {...this.state} />
+          </Col>
+        </Row>
+        <Row>
+          <EnviarTitulosTable
             titulos={this.state.titulos}
             selecionados={this.state.selecionados}
             onSelecionadosChange={this.selecionadosChangeHandle}
             onTituloChange={this.tituloChangeHandle}
           />
-        </div>
-      </div>
+        </Row>
+      </React.Fragment>
+
     );
   }
 }
