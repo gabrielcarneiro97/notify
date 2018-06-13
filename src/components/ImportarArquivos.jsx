@@ -7,7 +7,7 @@ import { api } from '../services';
 function ImportarAquivos(props) {
   const uploadProps = {
     name: 'file',
-    action: `${api}/file?type=${props.accept}`,
+    action: `${api}/file?accept=${props.accept}`,
     accept: props.accept,
     showUploadList: props.showUploadList,
     headers: {
@@ -18,7 +18,7 @@ function ImportarAquivos(props) {
         message.success(`${info.file.name} arquivo importado com sucesso!`);
         props.onNewFile(info.file.response);
       } else if (info.file.status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
+        message.error(`Falha na importação do arquivo ${info.file.name}.`);
       }
     },
   };
