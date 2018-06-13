@@ -26,7 +26,6 @@ function ImportarAquivos(props) {
   return (
     <Upload {...uploadProps}>
       <Button
-        size="small"
         icon="plus"
       >
         {props.children}

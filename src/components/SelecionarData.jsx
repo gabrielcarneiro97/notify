@@ -9,12 +9,18 @@ function SelecionarData(props) {
     <RangePicker
       format="DD/MM/YYYY"
       onChange={props.onChange}
+      disabled={props.disabled}
     />
   );
 }
 
 SelecionarData.propTypes = {
   onChange: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+};
+
+SelecionarData.defaultProps = {
+  disabled: false,
 };
 
 export default SelecionarData;

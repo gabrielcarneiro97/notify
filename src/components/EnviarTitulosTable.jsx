@@ -51,8 +51,8 @@ function TitulosTable(props) {
         />
       ),
       pagador: titulo.pagador.nome,
-      emissao: moment(titulo.emissao).format('DD[/]MM[/]YYYY'),
-      vencimento: moment(titulo.vencimento).format('DD[/]MM[/]YYYY'),
+      emissao: moment(titulo.emissao.data).format('DD[/]MM[/]YYYY'),
+      vencimento: moment(titulo.vencimento.data).format('DD[/]MM[/]YYYY'),
     });
   });
 

@@ -11,3 +11,5 @@ export { default as EnviarTitulos } from './EnviarTitulos';
 export { default as VisualizarTitulos } from './VisualizarTitulos';
 export { default as SelecionarData } from './SelecionarData';
 export { default as VisualizarTitulosTable } from './VisualizarTitulosTable';
+export { default as PagosCheckbox } from './PagosCheckbox';
+export { default as VisualizarForm } from './VisualizarForm';
