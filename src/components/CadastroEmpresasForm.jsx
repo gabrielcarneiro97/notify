@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Input, Button } from 'antd';
 
@@ -16,6 +16,7 @@ class CadastroEmpresasForm extends Component {
     numero: '',
     nome: '',
     cnpj: '',
+    telefone: '',
   }
 
   numeroHandleChange = (e) => {
@@ -28,6 +29,10 @@ class CadastroEmpresasForm extends Component {
 
   cnpjHandleChange = (e) => {
     this.setState({ cnpj: e.target.value });
+  }
+
+  telefoneHandleChange = (e) => {
+    this.setState({ telefone: e.target.value });
   }
 
   adicionarHandleClick = () => {
@@ -51,42 +56,73 @@ class CadastroEmpresasForm extends Component {
 
   render() {
     return (
-      <Row
-        type="flex"
-        justify="center"
-        gutter={8}
-      >
-        <Col>
-          <Input
-            addonBefore="Número"
-            value={this.state.numero}
-            onChange={this.numeroHandleChange}
-          />
-        </Col>
-        <Col>
-          <Input
-            addonBefore="Nome"
-            value={this.state.nome}
-            onChange={this.nomeHandleChange}
-          />
-        </Col>
-        <Col>
-          <Input
-            addonBefore="CNPJ"
-            value={this.state.cnpj}
-            onChange={this.cnpjHandleChange}
-          />
-        </Col>
-        <Col>
-          <Button
-            type="primary"
-            onClick={this.adicionarHandleClick}
-            disabled={this.props.disabled || !this.checkCampos()}
+      <Fragment>
+        <Row
+          type="flex"
+          justify="center"
+          gutter={8}
+        >
+          <Col
+            span={4}
           >
-            Adicionar
-          </Button>
-        </Col>
-      </Row>
+            <Input
+              addonBefore="Número"
+              value={this.state.numero}
+              onChange={this.numeroHandleChange}
+            />
+          </Col>
+          <Col
+            span={19}
+          >
+            <Input
+              addonBefore="Nome"
+              value={this.state.nome}
+              onChange={this.nomeHandleChange}
+            />
+          </Col>
+        </Row>
+        <Row
+          type="flex"
+          justify="center"
+          gutter={8}
+          style={{
+            marginTop: '8px',
+          }}
+        >
+          <Col
+            span={10}
+          >
+            <Input
+              addonBefore="CNPJ"
+              value={this.state.cnpj}
+              onChange={this.cnpjHandleChange}
+            />
+          </Col>
+          <Col
+            span={10}
+          >
+            <Input
+              addonBefore="Telefone"
+              value={this.state.telefone}
+              onChange={this.telefoneHandleChange}
+            />
+          </Col>
+          <Col
+            span={3}
+            style={{
+              textAlign: 'right',
+            }}
+          >
+            <Button
+              type="primary"
+              onClick={this.adicionarHandleClick}
+              disabled={this.props.disabled || !this.checkCampos()}
+            >
+              Adicionar
+            </Button>
+          </Col>
+        </Row>
+      </Fragment>
     );
   }
 }

@@ -18,11 +18,15 @@ class CadastroEmpresasTable extends Component {
     }, {
       title: 'Nome',
       dataIndex: 'nome',
-      width: '50%',
+      width: '40%',
     }, {
       title: 'CNPJ',
       dataIndex: 'cnpj',
-      width: '30%',
+      width: '20%',
+    }, {
+      title: 'Telefone',
+      dataIndex: 'telefone',
+      width: '20%',
     }, {
       title: 'Deletar',
       dataIndex: 'deletar',

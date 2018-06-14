@@ -16,3 +16,4 @@ export { default as VisualizarForm } from './VisualizarForm';
 export { default as CadastroEmpresas } from './CadastroEmpresas';
 export { default as CadastroEmpresasTable } from './CadastroEmpresasTable';
 export { default as CadastroEmpresasForm } from './CadastroEmpresasForm';
+export { default as GerenciarMenssagens } from './GerenciarMenssagens';
