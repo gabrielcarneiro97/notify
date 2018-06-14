@@ -35,14 +35,11 @@ class VisualizarTitulos extends React.Component {
   tituloDeleteHandle = (key) => {
     const { titulos } = this.state;
     const tituloId = titulos.findIndex(el => el.id === key);
-    axios.delete(`${api}/titulos`, {
-      params: {
-        id: key,
-      },
-    }).then(() => {
-      titulos.splice(tituloId, 1);
-      this.setState({ titulos });
-    }).catch(err => console.error(err));
+    axios.delete(`${api}/titulos/${key}`)
+      .then(() => {
+        titulos.splice(tituloId, 1);
+        this.setState({ titulos });
+      }).catch(err => console.error(err));
   }
 
   confirmHandle = (dados) => {

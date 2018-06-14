@@ -20,7 +20,7 @@ function MainMenu(props) {
       </Menu.Item>
       <Menu.Item key={`${match.url}/visualizar`}>
         <Link to={`${match.url}/visualizar`}>
-          <Icon type="folder-open" />Visualizar Títulos
+          <Icon type="scan" />Visualizar Títulos
         </Link>
       </Menu.Item>
       <Menu.Item key={`${match.url}/empresas`}>
