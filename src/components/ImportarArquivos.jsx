@@ -7,6 +7,7 @@ import { api } from '../services';
 function ImportarAquivos(props) {
   const uploadProps = {
     name: 'file',
+    multiple: true,
     action: `${api}/file?accept=${props.accept}`,
     accept: props.accept,
     showUploadList: props.showUploadList,

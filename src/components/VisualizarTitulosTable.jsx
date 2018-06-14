@@ -3,35 +3,53 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Table, Checkbox, Row, Col, Button, Popconfirm } from 'antd';
 
-const columns = [{
-  title: 'Número',
-  dataIndex: 'numero',
-  key: 'numero',
-}, {
-  title: 'Pagador',
-  dataIndex: 'pagador',
-  key: 'pagador',
-}, {
-  title: 'Vencimento',
-  dataIndex: 'vencimento',
-  key: 'vencimento',
-}, {
-  title: 'Valor Líquido',
-  dataIndex: 'valorLiquido',
-  key: 'valorLiquido',
-}, {
-  title: 'Pago',
-  dataIndex: 'pago',
-  key: 'pago',
-  align: 'center',
-}, {
-  title: 'Excluir',
-  dataIndex: 'excluir',
-  key: 'excluir',
-  align: 'center',
-}];
-
 function VisualizarTitulosTable(props) {
+  const render = (texto, titulo) => {
+    const spanProps = {};
+
+    if (!titulo.pagoBool && moment(titulo.vencimento, 'DD/MM/YYYY').unix() < moment().unix()) {
+      spanProps.style = {
+        color: 'red',
+      };
+    }
+
+
+    return <span {...spanProps}>{texto}</span>;
+  };
+
+  const columns = [{
+    title: 'Número',
+    dataIndex: 'numero',
+    key: 'numero',
+    render,
+  }, {
+    title: 'Pagador',
+    dataIndex: 'pagador',
+    key: 'pagador',
+    render,
+  }, {
+    title: 'Vencimento',
+    dataIndex: 'vencimento',
+    key: 'vencimento',
+    render,
+  }, {
+    title: 'Valor Líquido',
+    dataIndex: 'valorLiquido',
+    key: 'valorLiquido',
+    render,
+  }, {
+    title: 'Pago',
+    dataIndex: 'pago',
+    key: 'pago',
+    align: 'center',
+    render,
+  }, {
+    title: 'Excluir',
+    dataIndex: 'excluir',
+    key: 'excluir',
+    align: 'center',
+  }];
+
   const { titulos } = props;
   const dataSource = [];
 
@@ -52,6 +70,7 @@ function VisualizarTitulosTable(props) {
           }}
         />
       ),
+      pagoBool: titulo.pago,
       pagador: titulo.pagador.nome,
       emissao: moment(titulo.emissao.data).format('DD[/]MM[/]YYYY'),
       vencimento: moment(titulo.vencimento.data).format('DD[/]MM[/]YYYY'),

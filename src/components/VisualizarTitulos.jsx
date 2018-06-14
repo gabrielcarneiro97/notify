@@ -22,8 +22,6 @@ class VisualizarTitulos extends React.Component {
           id: key,
           pago: titulo.pago ? 'true' : 'false',
         },
-      }).then((res) => {
-        console.log(res);
       }).catch((err) => {
         console.error(err);
         titulo.pago = !titulo.pago;

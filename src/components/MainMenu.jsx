@@ -28,6 +28,11 @@ function MainMenu(props) {
           <Icon type="safety" />Cadastro Empresas
         </Link>
       </Menu.Item>
+      <Menu.Item key={`${match.url}/mensagens`}>
+        <Link to={`${match.url}/mensagens`}>
+          <Icon type="message" />Gerenciar Mensagens
+        </Link>
+      </Menu.Item>
     </Menu>
   );
 }
