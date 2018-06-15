@@ -1,12 +1,13 @@
 import React, { Fragment, Component } from 'react';
 import axios from 'axios';
 
-import { CadastroEmpresasTable, CadastroEmpresasForm } from '.';
+import { CadastroEmpresasTable, CadastroEmpresasForm, PaginaCarregando } from '.';
 import { api } from '../services';
 
 class CadastroEmpresas extends Component {
   state = {
     empresas: [],
+    isLoading: true,
   }
 
   componentDidMount() {
@@ -16,7 +17,7 @@ class CadastroEmpresas extends Component {
       .get(`${api}/empresas`)
       .then((res) => {
         res.data.forEach(el => empresas.push({ ...el, key: el.cnpj }));
-        this.setState({ empresas });
+        this.setState({ empresas, isLoading: false });
       })
       .catch(err => console.error(err));
   }
@@ -56,17 +57,22 @@ class CadastroEmpresas extends Component {
   }
 
   render() {
-    return (
-      <Fragment>
-        <CadastroEmpresasForm
-          onClick={this.adicionarEmpresaHandle}
-        />
-        <CadastroEmpresasTable
-          dataSource={this.state.empresas}
-          onDelete={this.deletarEmpresaHandle}
-        />
-      </Fragment>
-    );
+
+    if (!this.state.isLoading) {
+      return (
+        <Fragment>
+          <CadastroEmpresasForm
+            onClick={this.adicionarEmpresaHandle}
+          />
+          <CadastroEmpresasTable
+            dataSource={this.state.empresas}
+            onDelete={this.deletarEmpresaHandle}
+          />
+        </Fragment>
+      );
+    }
+
+    return <PaginaCarregando />;
   }
 }
 

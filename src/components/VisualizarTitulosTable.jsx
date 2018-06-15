@@ -6,8 +6,9 @@ import { Table, Checkbox, Row, Col, Button, Popconfirm } from 'antd';
 function VisualizarTitulosTable(props) {
   const render = (texto, titulo) => {
     const spanProps = {};
+    const DAY = 86400000;
 
-    if (!titulo.pagoBool && moment(titulo.vencimento, 'DD/MM/YYYY').unix() < moment().unix()) {
+    if (!titulo.pagoBool && moment(titulo.vencimento, 'DD/MM/YYYY').valueOf() + DAY < moment().valueOf()) {
       spanProps.style = {
         color: 'red',
       };

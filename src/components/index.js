@@ -19,3 +19,5 @@ export { default as CadastroEmpresasForm } from './CadastroEmpresasForm';
 export { default as GerenciarMensagens } from './GerenciarMensagens';
 export { default as GerenciarMensagensTable } from './GerenciarMensagensTable';
 export { default as RemoverSms } from './RemoverSms';
+export { default as AdicionarSms } from './AdicionarSms';
+export { default as PaginaCarregando } from './PaginaCarregando';

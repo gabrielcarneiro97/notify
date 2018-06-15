@@ -3,10 +3,14 @@ import moment from 'moment';
 
 import { Table } from 'antd';
 
-import { RemoverSms } from '.';
+import { RemoverSms, AdicionarSms, PaginaCarregando } from '.';
 
 class GerenciarMensagensTable extends Component {
-  static columns = [{
+  temEmpresa = cnpj => this.props.empresas.findIndex(empresa => empresa.cnpj === cnpj) !== -1;
+
+  pegarSmsTituloId = tituloId => this.props.smsAgendados.find(sms => sms.tituloId === tituloId);
+
+  defineColumns = () => [{
     title: 'Número',
     dataIndex: 'numero',
     width: '20%',
@@ -26,38 +30,52 @@ class GerenciarMensagensTable extends Component {
     title: 'Ação',
     dataIndex: 'acao',
     width: '10%',
-    render: (dados, row) => {
+    render: (dados) => {
       if (dados.smsId) {
-        return <RemoverSms dados={dados} />;
+        return (
+          <RemoverSms
+            dados={dados}
+            onDelete={this.props.smsDelete}
+          />
+        );
       }
+      return <AdicionarSms dados={dados} onAdd={this.props.smsAdd} />;
     },
   }];
 
-  state = {};
-
-  componentDidMount() {
-
-  }
-  render() {
+  defineDataSource = () => {
     const { titulos } = this.props;
     const dataSource = [];
-
     titulos.forEach((titulo) => {
-      dataSource.push({
-        key: titulo.numeroDocumento,
-        numero: titulo.numeroDocumento,
-        pagador: titulo.pagador.nome,
-        vencimento: moment(titulo.vencimento.data).format('DD/MM/YYYY'),
-        statusMensagem: titulo.idSms ? 'AGENDADA' : 'NÃO AGENDADA',
-        acao: { smsId: titulo.idSms, tituloId: titulo.id },
-      });
+      if (this.temEmpresa(titulo.pagador.id) && this.pegarSmsTituloId(titulo.id)) {
+        dataSource.push({
+          key: titulo.numeroDocumento,
+          numero: titulo.numeroDocumento,
+          pagador: titulo.pagador.nome,
+          vencimento: moment(titulo.vencimento.data).format('DD/MM/YYYY'),
+          statusMensagem: titulo.smsId ? 'AGENDADA' : 'NÃO AGENDADA',
+          acao: { smsId: titulo.smsId, tituloId: titulo.id, titulo },
+        });
+      }
     });
+    return dataSource;
+  }
+
+  render() {
+    if (!this.props.isLoading) {
+      const columns = this.defineColumns();
+      const dataSource = this.defineDataSource();
+
+      return (
+        <Table
+          columns={columns}
+          dataSource={dataSource}
+        />
+      );
+    }
 
     return (
-      <Table
-        columns={GerenciarMensagensTable.columns}
-        dataSource={dataSource}
-      />
+      <PaginaCarregando />
     );
   }
 }
