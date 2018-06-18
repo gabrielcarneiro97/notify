@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import { Table, Row, Col } from 'antd';
@@ -6,6 +7,15 @@ import { Table, Row, Col } from 'antd';
 import { RemoverSms, AdicionarSms, PaginaCarregando } from '.';
 
 class GerenciarMensagensTable extends Component {
+  static propTypes = {
+    empresas: PropTypes.arrayOf(PropTypes.object).isRequired,
+    smsAgendados: PropTypes.arrayOf(PropTypes.object).isRequired,
+    titulos: PropTypes.arrayOf(PropTypes.object).isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    smsDelete: PropTypes.func.isRequired,
+    smsAdd: PropTypes.func.isRequired,
+  }
+
   temEmpresa = cnpj => this.props.empresas.findIndex(empresa => empresa.cnpj === cnpj) !== -1;
 
   pegarSmsTituloId = tituloId => this.props.smsAgendados.find(sms => sms.tituloId === tituloId);
