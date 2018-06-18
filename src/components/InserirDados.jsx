@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import { Row, Col } from 'antd';
 
 import { ImportarArquivos, EnviarTitulosTable, EnviarTitulos } from '.';
 
 
-class InserirDados extends React.Component {
+class InserirDados extends Component {
   state = {
     titulos: [],
     selecionados: [],
@@ -37,7 +37,7 @@ class InserirDados extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <Row
           type="flex"
           justify="center"
@@ -70,7 +70,7 @@ class InserirDados extends React.Component {
             onTituloChange={this.tituloChangeHandle}
           />
         </Row>
-      </React.Fragment>
+      </Fragment>
 
     );
   }
