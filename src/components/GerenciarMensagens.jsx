@@ -62,22 +62,11 @@ class GerenciarMensagens extends Component {
 
   render() {
     return (
-      <Row
-        type="flex"
-        justify="center"
-      >
-        <Col
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          <GerenciarMensagensTable
-            {...this.state}
-            smsDelete={this.smsDeleteHandle}
-            smsAdd={this.smsAddHandle}
-          />
-        </Col>
-      </Row>
+      <GerenciarMensagensTable
+        {...this.state}
+        smsDelete={this.smsDeleteHandle}
+        smsAdd={this.smsAddHandle}
+      />
     );
   }
 }

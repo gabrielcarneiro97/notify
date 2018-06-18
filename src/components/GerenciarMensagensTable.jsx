@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 
-import { Table } from 'antd';
+import { Table, Row, Col } from 'antd';
 
 import { RemoverSms, AdicionarSms, PaginaCarregando } from '.';
 
@@ -67,10 +67,20 @@ class GerenciarMensagensTable extends Component {
       const dataSource = this.defineDataSource();
 
       return (
-        <Table
-          columns={columns}
-          dataSource={dataSource}
-        />
+        <Row
+          justify="center"
+          type="flex"
+          style={{
+            marginTop: '15px',
+          }}
+        >
+          <Col span={23}>
+            <Table
+              columns={columns}
+              dataSource={dataSource}
+            />
+          </Col>
+        </Row>
       );
     }
 

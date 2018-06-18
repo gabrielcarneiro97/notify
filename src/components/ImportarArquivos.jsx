@@ -13,6 +13,7 @@ function ImportarAquivos(props) {
     showUploadList: props.showUploadList,
     headers: {
       authorization: 'authorization-text',
+      'Access-Control-Allow-Origin': '*',
     },
     onChange: (info) => {
       if (info.file.status === 'done') {
