@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Row, Col, Button } from 'antd';
 import { SelecionarData, PagosCheckbox } from '.';
 
-class VisualizarForm extends React.Component {
+class VisualizarForm extends Component {
   static propTypes = {
     onConfirm: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
