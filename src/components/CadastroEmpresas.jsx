@@ -57,7 +57,6 @@ class CadastroEmpresas extends Component {
   }
 
   render() {
-
     if (!this.state.isLoading) {
       return (
         <Fragment>
