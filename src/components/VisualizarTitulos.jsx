@@ -17,9 +17,8 @@ class VisualizarTitulos extends Component {
     titulo.pago = !titulo.pago;
 
     this.setState({ titulos }, () => {
-      axios.put(`${api}/titulos`, null, {
+      axios.put(`${api}/titulos/${key}`, null, {
         params: {
-          id: key,
           pago: titulo.pago ? 'true' : 'false',
         },
       }).catch((err) => {
