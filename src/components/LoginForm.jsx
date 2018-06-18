@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { Form, Icon, Input, Button, message } from 'antd';
 import propTypes from 'prop-types';
 import axios from 'axios';
@@ -9,7 +9,7 @@ import './LoginForm.css';
 
 const FormItem = Form.Item;
 
-class LoginForm extends React.Component {
+class LoginForm extends Component {
   static propTypes = {
     history: propTypes.shape({
       push: propTypes.func,
