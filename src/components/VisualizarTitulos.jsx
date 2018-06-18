@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
 import { VisualizarForm, VisualizarTitulosTable } from '.';
 import { api } from '../services';
 
-class VisualizarTitulos extends React.Component {
+class VisualizarTitulos extends Component {
   state = {
     disableForm: false,
     titulos: [],
@@ -54,7 +54,7 @@ class VisualizarTitulos extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <VisualizarForm
           onConfirm={this.confirmHandle}
           disabled={this.state.disableForm}
@@ -64,7 +64,7 @@ class VisualizarTitulos extends React.Component {
           onTituloChange={this.tituloChangeHandle}
           onTituloDelete={this.tituloDeleteHandle}
         />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
