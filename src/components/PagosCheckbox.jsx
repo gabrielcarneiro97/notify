@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+
 import { Checkbox } from 'antd';
 
-class PagosCheckbox extends React.Component {
+class PagosCheckbox extends Component {
+  static propTypes = {
+    onChange: PropTypes.func.isRequired,
+  }
+
   state = {
     pagos: false,
     aberto: false,
@@ -29,7 +35,7 @@ class PagosCheckbox extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <Checkbox
           checked={this.state.pagos}
           onChange={() => this.handleChange('pagos')}
@@ -42,7 +48,7 @@ class PagosCheckbox extends React.Component {
         >
           Apenas em aberto
         </Checkbox>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
