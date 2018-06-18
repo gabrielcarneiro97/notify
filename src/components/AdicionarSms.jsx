@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import { Button, Tooltip } from 'antd';
@@ -6,6 +7,13 @@ import { Button, Tooltip } from 'antd';
 import { api } from '../services';
 
 class AdicionarSms extends Component {
+  static propTypes = {
+    dados: PropTypes.shape({
+      titulo: PropTypes.object,
+    }).isRequired,
+    onAdd: PropTypes.func.isRequired,
+  }
+
   state = {
     disabled: false,
   }
@@ -16,7 +24,10 @@ class AdicionarSms extends Component {
 
       axios
         .post(`${api}/sms`, { titulo })
-        .then(res => this.setState({ disabled: false }, () => this.props.onAdd(titulo.id, res.data)))
+        .then(res => this.setState(
+          { disabled: false },
+          () => this.props.onAdd(titulo.id, res.data),
+        ))
         .catch((err) => {
           console.error(err);
           this.setState({ disabled: false });
