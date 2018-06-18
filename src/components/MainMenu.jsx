@@ -23,9 +23,9 @@ function MainMenu(props) {
           <Icon type="scan" />Visualizar Títulos
         </Link>
       </Menu.Item>
-      <Menu.Item key={`${match.url}/empresas`}>
-        <Link to={`${match.url}/empresas`}>
-          <Icon type="team" />Cadastro Empresas
+      <Menu.Item key={`${match.url}/clientes`}>
+        <Link to={`${match.url}/clientes`}>
+          <Icon type="team" />Cadastro Clientes
         </Link>
       </Menu.Item>
       <Menu.Item key={`${match.url}/mensagens`}>

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Input, Button } from 'antd';
 
-class CadastroEmpresasForm extends Component {
+class CadastroClientesForm extends Component {
   static propTypes = {
     onClick: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
@@ -15,7 +15,7 @@ class CadastroEmpresasForm extends Component {
   state = {
     numero: '',
     nome: '',
-    cnpj: '',
+    id: '',
     telefone: '',
   }
 
@@ -27,8 +27,8 @@ class CadastroEmpresasForm extends Component {
     this.setState({ nome: e.target.value });
   }
 
-  cnpjHandleChange = (e) => {
-    this.setState({ cnpj: e.target.value });
+  idHandleChange = (e) => {
+    this.setState({ id: e.target.value });
   }
 
   telefoneHandleChange = (e) => {
@@ -39,15 +39,16 @@ class CadastroEmpresasForm extends Component {
     this.setState({
       numero: '',
       nome: '',
-      cnpj: '',
+      id: '',
+      telefone: '',
     });
     this.props.onClick(this.state);
   }
 
   checkCampos = () => {
-    const { numero, nome, cnpj } = this.state;
+    const { numero, nome, id } = this.state;
 
-    if (numero !== '' && nome !== '' && cnpj !== '') {
+    if (numero !== '' && nome !== '' && id !== '') {
       return true;
     }
 
@@ -93,9 +94,9 @@ class CadastroEmpresasForm extends Component {
             span={10}
           >
             <Input
-              addonBefore="CNPJ"
-              value={this.state.cnpj}
-              onChange={this.cnpjHandleChange}
+              addonBefore="CNPJ/CPF"
+              value={this.state.id}
+              onChange={this.idHandleChange}
             />
           </Col>
           <Col
@@ -127,4 +128,4 @@ class CadastroEmpresasForm extends Component {
   }
 }
 
-export default CadastroEmpresasForm;
+export default CadastroClientesForm;

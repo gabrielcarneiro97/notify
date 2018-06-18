@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Table, Popconfirm, Row, Col, Button } from 'antd';
 
-class CadastroEmpresasTable extends Component {
+class CadastroClientesTable extends Component {
   static propTypes = {
     dataSource: PropTypes.arrayOf(PropTypes.object).isRequired,
     onDelete: PropTypes.func.isRequired,
@@ -20,8 +20,8 @@ class CadastroEmpresasTable extends Component {
       dataIndex: 'nome',
       width: '40%',
     }, {
-      title: 'CNPJ',
-      dataIndex: 'cnpj',
+      title: 'CNPJ/CPF',
+      dataIndex: 'id',
       width: '20%',
     }, {
       title: 'Telefone',
@@ -66,4 +66,4 @@ class CadastroEmpresasTable extends Component {
   }
 }
 
-export default CadastroEmpresasTable;
+export default CadastroClientesTable;

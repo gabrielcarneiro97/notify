@@ -8,7 +8,7 @@ import { RemoverSms, AdicionarSms, PaginaCarregando } from '.';
 
 class GerenciarMensagensTable extends Component {
   static propTypes = {
-    empresas: PropTypes.arrayOf(PropTypes.object).isRequired,
+    clientes: PropTypes.arrayOf(PropTypes.object).isRequired,
     smsAgendados: PropTypes.arrayOf(PropTypes.object).isRequired,
     titulos: PropTypes.arrayOf(PropTypes.object).isRequired,
     isLoading: PropTypes.bool.isRequired,
@@ -16,7 +16,7 @@ class GerenciarMensagensTable extends Component {
     smsAdd: PropTypes.func.isRequired,
   }
 
-  temEmpresa = cnpj => this.props.empresas.findIndex(empresa => empresa.cnpj === cnpj) !== -1;
+  temCliente = cnpj => this.props.clientes.findIndex(cliente => cliente.cnpj === cnpj) !== -1;
 
   pegarSmsTituloId = tituloId => this.props.smsAgendados.find(sms => sms.tituloId === tituloId);
 
@@ -57,7 +57,7 @@ class GerenciarMensagensTable extends Component {
     const { titulos } = this.props;
     const dataSource = [];
     titulos.forEach((titulo) => {
-      if (this.temEmpresa(titulo.pagador.id) && this.pegarSmsTituloId(titulo.id)) {
+      if (this.temCliente(titulo.pagador.id) && this.pegarSmsTituloId(titulo.id)) {
         dataSource.push({
           key: titulo.numeroDocumento,
           numero: titulo.numeroDocumento,

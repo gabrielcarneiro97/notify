@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { Layout } from 'antd';
 import PropTypes from 'prop-types';
 
-import { MainMenu, InserirDados, VisualizarTitulos, CadastroEmpresas, GerenciarMensagens } from '.';
+import { MainMenu, InserirDados, VisualizarTitulos, CadastroClientes, GerenciarMensagens } from '.';
 
 const { Content, Sider } = Layout;
 
@@ -25,7 +25,7 @@ function MainLogged({ match }) {
           <Switch>
             <Route exact path={`${match.path}/registrar`} component={InserirDados} />
             <Route exact path={`${match.path}/visualizar`} component={VisualizarTitulos} />
-            <Route exact path={`${match.path}/empresas`} component={CadastroEmpresas} />
+            <Route exact path={`${match.path}/clientes`} component={CadastroClientes} />
             <Route exact path={`${match.path}/mensagens`} component={GerenciarMensagens} />
 
             <Redirect from="/app" to={`${match.url}/visualizar`} />

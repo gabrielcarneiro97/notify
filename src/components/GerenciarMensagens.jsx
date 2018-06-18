@@ -11,8 +11,8 @@ class GerenciarMensagens extends Component {
     getTitulos: false,
     smsAgendados: [],
     getSms: false,
-    empresas: [],
-    getEmpresas: false,
+    clientes: [],
+    getClientes: false,
     isLoading: true,
   };
 
@@ -28,8 +28,8 @@ class GerenciarMensagens extends Component {
       .catch(err => console.error(err));
 
     axios
-      .get(`${api}/empresas`)
-      .then(res => this.setState({ empresas: res.data, getEmpresas: true }, () => this.isLoading()))
+      .get(`${api}/cliens`)
+      .then(res => this.setState({ clientes: res.data, getClientes: true }, () => this.isLoading()))
       .catch(err => console.error(err));
   }
 
@@ -54,9 +54,9 @@ class GerenciarMensagens extends Component {
   }
 
   isLoading = () => {
-    const { getEmpresas, getSms, getTitulos } = this.state;
+    const { getClientes, getSms, getTitulos } = this.state;
 
-    this.setState({ isLoading: !getEmpresas || !getSms || !getTitulos });
+    this.setState({ isLoading: !getClientes || !getSms || !getTitulos });
   }
 
   render() {
