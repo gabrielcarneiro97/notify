@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Row, Col, Layout } from 'antd';
 import PropTypes from 'prop-types';
