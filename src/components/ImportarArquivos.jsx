@@ -29,6 +29,7 @@ function ImportarAquivos(props) {
     <Upload {...uploadProps}>
       <Button
         icon="plus"
+        type={props.type}
       >
         {props.children}
       </Button>
@@ -41,11 +42,13 @@ ImportarAquivos.propTypes = {
   accept: PropTypes.string.isRequired,
   showUploadList: PropTypes.bool,
   children: PropTypes.node,
+  type: PropTypes.string,
 };
 
 ImportarAquivos.defaultProps = {
   showUploadList: true,
   children: <span />,
+  type: 'primary',
 };
 
 export default ImportarAquivos;

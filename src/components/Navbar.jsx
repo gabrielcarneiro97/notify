@@ -21,14 +21,21 @@ function Navbar(props) {
   return (
     <Row style={{ color: '#FFF' }}>
       <Col span={12}>
-        {
-          // eslint-disable-next-line
-        }<a style={{ color: '#FFF' }}>
-          <span style={{ fontWeight: 'bolder' }}>BOLETOS </span>
-          <span style={{ fontWeight: 'lighter' }}>{version}</span>
+        <div
+          style={{
+            width: '230px',
+            textAlign: 'center',
+          }}
+        >
           {
             // eslint-disable-next-line
-        }</a>
+          }<a style={{ color: '#FFF' }}>
+            <span style={{ fontWeight: 'bolder' }}>BOLETOS </span>
+            <span style={{ fontWeight: 'lighter' }}>{version}</span>
+            {
+              // eslint-disable-next-line
+            }</a>
+        </div>
       </Col>
       <Col span={12} style={{ textAlign: 'right' }}>
         {

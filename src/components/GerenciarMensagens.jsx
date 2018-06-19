@@ -28,7 +28,7 @@ class GerenciarMensagens extends Component {
       .catch(err => console.error(err));
 
     axios
-      .get(`${api}/cliens`)
+      .get(`${api}/clientes`)
       .then(res => this.setState({ clientes: res.data, getClientes: true }, () => this.isLoading()))
       .catch(err => console.error(err));
   }

@@ -20,7 +20,7 @@ function App() {
   return (
     <BrowserRouter>
       <Layout>
-        <Header>
+        <Header style={{ paddingLeft: '0', backgroundColor: '#096dd9' }}>
           <Navbar />
         </Header>
         <Switch>
