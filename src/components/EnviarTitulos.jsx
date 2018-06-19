@@ -19,11 +19,12 @@ class EnviarTitulos extends Component {
     isDisabled: false,
   }
 
-  paraEnviar = this.props.titulos.filter(titulo => this.props.selecionados.includes(titulo.id));
-
   enviar = () => {
+    const paraEnviar =
+      this.props.titulos.filter(titulo => this.props.selecionados.includes(titulo.id));
+
     this.setState({ isDisabled: true }, () => {
-      axios.post(`${api}/titulos`, this.paraEnviar).then(() => {
+      axios.post(`${api}/titulos`, paraEnviar).then(() => {
         message.success('Remessas importadas com sucesso!');
         this.props.history.push('app/visualizar');
       }).catch(() => {

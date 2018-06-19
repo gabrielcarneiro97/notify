@@ -16,7 +16,7 @@ class GerenciarMensagensTable extends Component {
     smsAdd: PropTypes.func.isRequired,
   }
 
-  temCliente = cnpj => this.props.clientes.findIndex(cliente => cliente.cnpj === cnpj) !== -1;
+  temCliente = id => this.props.clientes.findIndex(cliente => cliente.id === id) !== -1;
 
   pegarSmsTituloId = tituloId => this.props.smsAgendados.find(sms => sms.tituloId === tituloId);
 
@@ -57,12 +57,12 @@ class GerenciarMensagensTable extends Component {
     const { titulos } = this.props;
     const dataSource = [];
     titulos.forEach((titulo) => {
-      if (this.temCliente(titulo.pagador.id) && this.pegarSmsTituloId(titulo.id)) {
+      if (this.temCliente(titulo.pagador.id)) {
         dataSource.push({
           key: titulo.numeroDocumento,
           numero: titulo.numeroDocumento,
           pagador: titulo.pagador.nome,
-          vencimento: moment(titulo.vencimento.data).format('DD/MM/YYYY'),
+          vencimento: moment(titulo.vencimento.data).utc(false).format('DD/MM/YYYY'),
           statusMensagem: titulo.smsId ? 'AGENDADA' : 'NÃO AGENDADA',
           acao: { smsId: titulo.smsId, tituloId: titulo.id, titulo },
         });
