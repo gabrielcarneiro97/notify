@@ -7,6 +7,7 @@ import { MainMenu, InserirDados, VisualizarTitulos, CadastroClientes, GerenciarM
 
 const { Content, Sider } = Layout;
 
+
 function MainLogged({ match }) {
   return (
     <Layout>
