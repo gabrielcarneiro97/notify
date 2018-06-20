@@ -57,7 +57,8 @@ class GerenciarMensagensTable extends Component {
     const { titulos } = this.props;
     const dataSource = [];
     titulos.forEach((titulo) => {
-      if (this.temCliente(titulo.pagador.id)) {
+      if (this.temCliente(titulo.pagador.id) &&
+        ((titulo.smsId && this.pegarSmsTituloId(titulo.id)) || (!titulo.smsId))) {
         dataSource.push({
           key: titulo.numeroDocumento,
           numero: titulo.numeroDocumento,
