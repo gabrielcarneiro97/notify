@@ -24,7 +24,21 @@ class EnviarTitulos extends Component {
       this.props.titulos.filter(titulo => this.props.selecionados.includes(titulo.id));
 
     this.setState({ isDisabled: true }, () => {
-      axios.post(`${api}/titulos`, paraEnviar).then(() => {
+      let counter = 0;
+      let parte = [];
+      const promises = [];
+      for (let i = 0; i < paraEnviar.length; i += 1) {
+        parte.push(paraEnviar[i]);
+        if (counter === 20 || i === paraEnviar.length - 1) {
+          counter = 0;
+          promises.push(axios.post(`${api}/titulos`, parte));
+          parte = [];
+        } else {
+          counter += 1;
+        }
+      }
+
+      Promise.all(promises).then(() => {
         message.success('Remessas importadas com sucesso!');
         this.props.history.push('app/visualizar');
       }).catch(() => {

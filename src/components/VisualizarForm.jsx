@@ -27,10 +27,14 @@ class VisualizarForm extends Component {
   }
 
   selecionarDataChangeHandle = (periodoMoment) => {
-    const inicio = periodoMoment[0].valueOf();
-    const fim = periodoMoment[1].valueOf();
+    if (periodoMoment.length > 0) {
+      const inicio = periodoMoment[0].valueOf();
+      const fim = periodoMoment[1].valueOf();
 
-    this.setState({ inicio, fim });
+      this.setState({ inicio, fim });
+    } else {
+      this.setState({ inicio: 0, fim: 0 });
+    }
   }
 
   handleConfirm = () => {
