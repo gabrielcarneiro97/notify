@@ -35,22 +35,30 @@ class GerenciarMensagens extends Component {
 
   smsDeleteHandle = (tituloId) => {
     const titulos = [...this.state.titulos];
+    let smsAgendados = [...this.state.smsAgendados];
+
+    smsAgendados = smsAgendados.filter(sms => sms.tituloId !== tituloId);
 
     const titulo = titulos.find(t => t.id === tituloId);
 
     delete titulo.smsId;
 
-    this.setState({ titulos });
+    this.setState({ titulos, smsAgendados });
   }
 
-  smsAddHandle = (tituloId, smsId) => {
+  smsAddHandle = (tituloId, { smsId, sms }) => {
     const titulos = [...this.state.titulos];
+    const smsAgendados = [...this.state.smsAgendados];
+
+    console.log(sms);
+
+    smsAgendados.push(sms);
 
     const titulo = titulos.find(t => t.id === tituloId);
 
     titulo.smsId = smsId;
 
-    this.setState({ titulos });
+    this.setState({ titulos, smsAgendados });
   }
 
   isLoading = () => {
