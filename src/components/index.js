@@ -18,6 +18,7 @@ export { default as CadastroClientesTable } from './CadastroClientesTable';
 export { default as CadastroClientesForm } from './CadastroClientesForm';
 export { default as GerenciarMensagens } from './GerenciarMensagens';
 export { default as GerenciarMensagensTable } from './GerenciarMensagensTable';
+export { default as GerenciarMensagensCheckbox } from './GerenciarMensagensCheckbox';
 export { default as RemoverSms } from './RemoverSms';
 export { default as AdicionarSms } from './AdicionarSms';
 export { default as PaginaCarregando } from './PaginaCarregando';

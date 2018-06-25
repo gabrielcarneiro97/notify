@@ -11,6 +11,7 @@ class GerenciarMensagensTable extends Component {
     clientes: PropTypes.arrayOf(PropTypes.object).isRequired,
     smsAgendados: PropTypes.arrayOf(PropTypes.object).isRequired,
     titulos: PropTypes.arrayOf(PropTypes.object).isRequired,
+    apenasNaoAgendados: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired,
     smsDelete: PropTypes.func.isRequired,
     smsAdd: PropTypes.func.isRequired,
@@ -54,11 +55,12 @@ class GerenciarMensagensTable extends Component {
   }];
 
   defineDataSource = () => {
-    const { titulos } = this.props;
+    const { titulos, apenasNaoAgendados } = this.props;
     const dataSource = [];
     titulos.forEach((titulo) => {
       if (this.temCliente(titulo.pagador.id) &&
-        ((titulo.smsId && this.pegarSmsTituloId(titulo.id)) || (!titulo.smsId))) {
+        ((titulo.smsId && this.pegarSmsTituloId(titulo.id)) || (!titulo.smsId)) &&
+        ((apenasNaoAgendados && !titulo.smsId) || (!apenasNaoAgendados))) {
         dataSource.push({
           key: titulo.numeroDocumento,
           numero: titulo.numeroDocumento,

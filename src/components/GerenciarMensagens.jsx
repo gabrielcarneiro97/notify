@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import { Row, Col } from 'antd';
 
 
 import { api } from '../services';
-import { GerenciarMensagensTable } from '.';
+import { GerenciarMensagensTable, GerenciarMensagensCheckbox } from '.';
 
 class GerenciarMensagens extends Component {
   state = {
@@ -14,6 +15,7 @@ class GerenciarMensagens extends Component {
     clientes: [],
     getClientes: false,
     isLoading: true,
+    apenasNaoAgendados: false,
   };
 
   componentDidMount() {
@@ -50,8 +52,6 @@ class GerenciarMensagens extends Component {
     const titulos = [...this.state.titulos];
     const smsAgendados = [...this.state.smsAgendados];
 
-    console.log(sms);
-
     smsAgendados.push(sms);
 
     const titulo = titulos.find(t => t.id === tituloId);
@@ -67,13 +67,32 @@ class GerenciarMensagens extends Component {
     this.setState({ isLoading: !getClientes || !getSms || !getTitulos });
   }
 
+  checkboxHandle = (checkboxValue) => {
+    this.setState({ apenasNaoAgendados: checkboxValue });
+  }
+
   render() {
     return (
-      <GerenciarMensagensTable
-        {...this.state}
-        smsDelete={this.smsDeleteHandle}
-        smsAdd={this.smsAddHandle}
-      />
+      <Fragment>
+        <Row
+          justify="center"
+          type="flex"
+          style={{
+            marginTop: '15px',
+          }}
+        >
+          <Col span={23}>
+            <GerenciarMensagensCheckbox
+              onChange={this.checkboxHandle}
+            />
+          </Col>
+        </Row>
+        <GerenciarMensagensTable
+          {...this.state}
+          smsDelete={this.smsDeleteHandle}
+          smsAdd={this.smsAddHandle}
+        />
+      </Fragment>
     );
   }
 }
