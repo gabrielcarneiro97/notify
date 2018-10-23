@@ -8,7 +8,7 @@ function ImportarAquivos(props) {
   const uploadProps = {
     name: 'file',
     multiple: true,
-    action: `${api}/file?accept=${props.accept}`,
+    action: `${api}/file`,
     accept: props.accept,
     showUploadList: props.showUploadList,
     headers: {

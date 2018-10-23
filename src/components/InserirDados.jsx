@@ -46,7 +46,7 @@ class InserirDados extends Component {
             span={11}
           >
             <ImportarArquivos
-              accept=".REM"
+              accept=".REM,.TXT"
               showUploadList={false}
               onNewFile={this.newFile}
             >
